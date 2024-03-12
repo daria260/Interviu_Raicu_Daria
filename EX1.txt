@@ -1,0 +1,292 @@
+
+daria@laptop-daria MINGW64 ~/Desktop
+$
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker pull ubuntu:latest
+
+latest: Pulling from library/ubuntu
+Digest: sha256:77906da86b60585ce12215807090eb327e7386c8fafb5402369e421f44eff17e
+Status: Image is up to date for ubuntu:latest
+docker.io/library/ubuntu:latest
+
+What's Next?
+  View a summary of image vulnerabilities and recommendations → docker scout quickview ubuntu:latest
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run -it --name my_linux_container <linux-image:tag>
+bash: syntax error near unexpected token `newline'
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run -it --name my_linux_container <ubuntu>
+bash: syntax error near unexpected token `newline'
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run -it --name my_linux_container ubuntu:latest
+the input device is not a TTY.  If you are using mintty, try prefixing the command with 'winpty'
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run --name my_linux_container ubuntu:latest
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run -ti --name my_linux_container ubuntu:latest
+the input device is not a TTY.  If you are using mintty, try prefixing the command with 'winpty'
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker exec -it my_linux_container /bin/bash
+the input device is not a TTY.  If you are using mintty, try prefixing the command with 'winpty'
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker exec my_linux_container /bin/bash
+Error response from daemon: container ae0f8da8574f486b42960b28e6cf2636c75bb351912bd05f5048448370b43316 is not running
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run -it --name my_linux_container ubuntu:latest /bin/bash
+the input device is not a TTY.  If you are using mintty, try prefixing the command with 'winpty'
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run -it -e TERM=xterm --name my_linux_container ubuntu:latest /bin/bashthe input device is not a TTY.  If you are using mintty, try prefixing the command with 'winpty'
+
+daria@laptop-daria MINGW64 ~/Desktop
+$
+
+daria@laptop-daria MINGW64 ~/Desktop
+$
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ winpty docker run -it --name my_linux_container ubuntu
+docker: Error response from daemon: Conflict. The container name "/my_linux_cont
+ainer" is already in use by container "ae0f8da8574f486b42960b28e6cf2636c75bb3519
+12bd05f5048448370b43316". You have to remove (or rename) that container to be ab
+le to reuse that name.
+See 'docker run --help'.
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker rm my_linux_container
+my_linux_container
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ winpty docker run -it --name my_linux_container ubuntu
+root@58ab944edaba:/#
+root@58ab944edaba:/# adduser john
+Adding user `john' ...
+Adding new group `john' (1000) ...
+Adding new user `john' (1000) with group `john' ...
+Creating home directory `/home/john' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for john
+Enter the new value, or press ENTER for the default
+        Full Name []: John Swift
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+root@58ab944edaba:/# pws
+bash: pws: command not found
+root@58ab944edaba:/# pwd
+/
+root@58ab944edaba:/# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+john:x:1000:1000:John Swift,,,:/home/john:/bin/bash
+root@58ab944edaba:/#
+root@58ab944edaba:/# doceker --version
+bash: doceker: command not found
+root@58ab944edaba:/# docker --version
+bash: docker: command not found
+root@58ab944edaba:/# exit
+exit
+
+daria@laptop-daria MINGW64 ~/Desktop
+$
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker cp C:/Users/daria/Desktop/interviu/create_large_file.sh my_linux_container:/home/john/
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker start my_linux_container
+my_linux_container
+
+daria@laptop-daria MINGW64 ~/Desktop
+$
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
+58ab944edaba   ubuntu    "/bin/bash"   26 minutes ago   Up 12 seconds             my_linux_container
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ winpty docker exec -it my_linux_container
+"docker exec" requires at least 2 arguments.
+See 'docker exec --help'.
+
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+Execute a command in a running container
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ winpty docker exec -it my_linux_container bash
+root@58ab944edaba:/#
+root@58ab944edaba:/# ls home/john
+create_large_file.sh
+root@58ab944edaba:/# cat /home/john/create_large_file.sh
+#!/bin/bash
+
+dd if=/dev/zero of=large_file bs=1M count=50
+
+mv lage_file /home/john
+
+root@58ab944edaba:/# su john
+john@58ab944edaba:/$ su - john
+Password:
+john@58ab944edaba:~$ ./create_large_file.sh
+50+0 records in
+50+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.0318301 s, 1.6 GB/s
+mv: cannot stat 'lage_file': No such file or directory
+john@58ab944edaba:~$ sed -i 's/mv lage_file/mv large_file/' create_large_file.sh
+john@58ab944edaba:~$ cat create_large_file.sh
+#!/bin/bash
+
+dd if=/dev/zero of=large_file bs=1M count=50
+
+mv large_file /home/john
+
+john@58ab944edaba:~$ ./create_large_file.sh
+50+0 records in
+50+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.0305904 s, 1.7 GB/s
+mv: 'large_file' and '/home/john/large_file' are the same file
+john@58ab944edaba:~$ mv -f large_file /home/john
+mv: 'large_file' and '/home/john/large_file' are the same file
+john@58ab944edaba:~$ rm /home/john/large_file
+john@58ab944edaba:~$ mv large_file /home/john/
+mv: cannot stat 'large_file': No such file or directory
+john@58ab944edaba:~$ ls /home/john
+create_large_file.sh
+john@58ab944edaba:~$ ./create_large_file.sh
+50+0 records in
+50+0 records out
+52428800 bytes (52 MB, 50 MiB) copied, 0.0305472 s, 1.7 GB/s
+mv: 'large_file' and '/home/john/large_file' are the same file
+john@58ab944edaba:~$
+john@58ab944edaba:~$
+john@58ab944edaba:~$ ls /home/john
+create_large_file.sh  large_file
+john@58ab944edaba:/$ exit
+exit
+root@58ab944edaba:/# cut -d: -f1 /etc/passwd
+root
+daemon
+bin
+sys
+sync
+games
+man
+lp
+mail
+news
+uucp
+proxy
+www-data
+backup
+list
+irc
+gnats
+nobody
+_apt
+john
+root@58ab944edaba:/# echo $HOME
+/root
+root@58ab944edaba:/# cut -d: -f1 /etc/passwd | wc -l
+20
+root@58ab944edaba:/# #read -p !"
+root@58ab944edaba:/# ##read -p "username
+root@58ab944edaba:/# ##read -p "username" username
+root@58ab944edaba:/# #read -p "username" username
+root@58ab944edaba:/# #grep
+root@58ab944edaba:/# ##grep "
+root@58ab944edaba:/# ##grep ^$username:" /etc/passwd | cut -d: -f6
+root@58ab944edaba:/# #grep "^$username:" /etc/passwd | cut -d: -f6
+root@58ab944edaba:/#
+root@58ab944edaba:/#
+root@58ab944edaba:/#
+root@58ab944edaba:/#
+root@58ab944edaba:/#
+root@58ab944edaba:/#
+root@58ab944edaba:/#
+root@58ab944edaba:/#
+root@58ab944edaba:/# #read -p "username" username
+root@58ab944edaba:/# #grep "^$username:" /etc/passwd | cut -d: -f6
+root@58ab944edaba:/# read -p "username" username
+username
+root@58ab944edaba:/# grep "^$username:" /etc/passwd | cut -d: -f6
+root@58ab944edaba:/#
+root@58ab944edaba:/# read -p "username" username
+username john
+root@58ab944edaba:/# grep "^$username:" /etc/passwd | cut -d: -f6
+/home/john
+root@58ab944edaba:/# awk -F: '$3 >= 1000 && $3 <= 1010' /etc/passwd
+john:x:1000:1000:John Swift,,,:/home/john:/bin/bash
+root@58ab944edaba:/# grep -E '/bin/(bash|sh)$' /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+john:x:1000:1000:John Swift,,,:/home/john:/bin/bash
+root@58ab944edaba:/#
+root@58ab944edaba:/# sed 's/\//\\/g' /etc/passwd > modified_passwd_file
+john@58ab944edaba:~$
+root@58ab944edaba:/# cat modified_passwd_file
+root:x:0:0:root:\root:\bin\bash
+daemon:x:1:1:daemon:\usr\sbin:\usr\sbin\nologin
+bin:x:2:2:bin:\bin:\usr\sbin\nologin
+sys:x:3:3:sys:\dev:\usr\sbin\nologin
+sync:x:4:65534:sync:\bin:\bin\sync
+games:x:5:60:games:\usr\games:\usr\sbin\nologin
+man:x:6:12:man:\var\cache\man:\usr\sbin\nologin
+lp:x:7:7:lp:\var\spool\lpd:\usr\sbin\nologin
+mail:x:8:8:mail:\var\mail:\usr\sbin\nologin
+news:x:9:9:news:\var\spool\news:\usr\sbin\nologin
+uucp:x:10:10:uucp:\var\spool\uucp:\usr\sbin\nologin
+proxy:x:13:13:proxy:\bin:\usr\sbin\nologin
+www-data:x:33:33:www-data:\var\www:\usr\sbin\nologin
+backup:x:34:34:backup:\var\backups:\usr\sbin\nologin
+list:x:38:38:Mailing List Manager:\var\list:\usr\sbin\nologin
+irc:x:39:39:ircd:\run\ircd:\usr\sbin\nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):\var\lib\gnats:\usr\sbin\nologin
+nobody:x:65534:65534:nobody:\nonexistent:\usr\sbin\nologin
+_apt:x:100:65534::\nonexistent:\usr\sbin\nologin
+john:x:1000:1000:John Swift,,,:\home\john:\bin\bash
+root@58ab944edaba:/# hostname -I | cut -d' ' -f1
+172.17.0.2
+root@58ab944edaba:/# curl -s ifconfig.me
+-bash: curl: command not found
+root@58ab944edaba:/# ^C
+root@58ab944edaba:/# wget -qO- ifconfig.me
+-bash: wget: command not found
+root@58ab944edaba:/# ^C
+root@58ab944edaba:/# su john
+Password:
+john@58ab944edaba:~$ echo $HOME
+/home/john
+john@58ab944edaba:~$ ^C
+john@58ab944edaba:~$
