@@ -1,0 +1,105 @@
+EX3
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker pull mysql:latest
+
+
+
+latest: Pulling from library/mysql
+9a5c778f631f: Pulling fs layer
+9e77c3a95bf2: Pulling fs layer
+8b279a2086e0: Pulling fs layer
+c8bfbcde7882: Pulling fs layer
+c8bfbcde7882: Waiting
+d35b074b68ec: Pulling fs layer
+d35b074b68ec: Waiting
+beea5014e6af: Pulling fs layer
+beea5014e6af: Waiting
+dc3791a61558: Pulling fs layer
+52f9323b9f0e: Pulling fs layer
+7f7391eab49b: Pulling fs layer
+7f7391eab49b: Waiting
+8d2f04b287ee: Pulling fs layer
+8d2f04b287ee: Waiting
+dc3791a61558: Waiting
+9e77c3a95bf2: Download complete
+8b279a2086e0: Download complete
+d35b074b68ec: Verifying Checksum
+d35b074b68ec: Download complete
+c8bfbcde7882: Verifying Checksum
+c8bfbcde7882: Download complete
+beea5014e6af: Verifying Checksum
+beea5014e6af: Download complete
+52f9323b9f0e: Download complete
+9a5c778f631f: Download complete
+8d2f04b287ee: Verifying Checksum
+8d2f04b287ee: Download complete
+9a5c778f631f: Pull complete
+9e77c3a95bf2: Pull complete
+8b279a2086e0: Pull complete
+c8bfbcde7882: Pull complete
+d35b074b68ec: Pull complete
+beea5014e6af: Pull complete
+dc3791a61558: Verifying Checksum
+dc3791a61558: Download complete
+7f7391eab49b: Verifying Checksum
+7f7391eab49b: Download complete
+dc3791a61558: Pull complete
+52f9323b9f0e: Pull complete
+7f7391eab49b: Pull complete
+8d2f04b287ee: Pull complete
+Digest: sha256:9d1c923e5f66a89607285ee2641f8a53430a1ccd5e4a62b35eb8a48b74b9ff48
+Status: Downloaded newer image for mysql:latest
+docker.io/library/mysql:latest
+
+What's Next?
+  View a summary of image vulnerabilities and recommendations → docker scout quickview mysql:latest
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run -d -- name container -e MYSQL_ROOT_PASSWORD = 0000 -p 3306:3306 mysql
+Unable to find image 'name:latest' locally
+docker: Error response from daemon: pull access denied for name, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker run -d --name container -e MYSQL_ROOT_PASSWORD=0000 -p 3306:3306 mysql
+c076bbf0ca4847d36ef3f475ea7bd8b7e0f4c299036b79094fb1c946b7bfcb8c
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ winpty docker exec -it container bash
+bash-4.4#
+bash-4.4# exit
+exit
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker cp C:/Users/daria/Desktop/interviu/company.sql container/company.sql
+must specify at least one container source
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ ^C
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ docker exec -it container mysql -uroot -ppassword -e "CREATE DATABASE company;"
+the input device is not a TTY.  If you are using mintty, try prefixing the command with 'winpty'
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ winpty docker exec -it container mysql -uroot -ppassword -e "CREATE DATABASE company;"
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ winpty docker exec -it container bash
+bash-4.4#
+bash-4.4#
+bash-4.4# ^C
+bash-4.4#
+bash-4.4# docker exec -it container mysql -uroot -ppassword -e "CREATE DATABASE company;"
+bash: docker: command not found
+bash-4.4# exit
+exit
+
+daria@laptop-daria MINGW64 ~/Desktop
+$ ^C
+
+daria@laptop-daria MINGW64 ~/Desktop
+$
